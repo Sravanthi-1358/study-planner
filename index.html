@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Smart Study Planner</h1>
+    <div class="muted">Welcome! Manage goals • reminders • progress</div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <button id="nav-home" class="active">Home</button>
+      <button id="nav-goals">Goals</button>
+      <button id="nav-schedule">Schedule</button>
+      <button id="nav-reminder">Reminders</button>
+      <button id="nav-progress">Progress</button>
+      <hr />
+      <button id="add-task-btn" class="btn">+ Add Task</button>
+      <div style="margin-top:8px;font-size:13px;color:var(--muted)">Signed in as <span id="user-label">you</span></div>
+    </nav>
+
+    <main class="content">
+      <section id="page-home" class="page">
+        <h2>Dashboard</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Tasks</h3>
+            <p class="muted" id="summary-tasks">Loading...</p>
+          </div>
+          <div class="card">
+            <h3>Upcoming Reminder</h3>
+            <p class="muted" id="summary-next">None</p>
+          </div>
+          <div class="card">
+            <h3>Progress</h3>
+            <p class="muted" id="summary-progress">Loading...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-goals" class="page" style="display:none">
+        <h2>Goals / Tasks</h2>
+        <div id="goals-list"></div>
+      </section>
+
+      <section id="page-schedule" class="page" style="display:none">
+        <h2>Schedule</h2>
+        <input type="date" id="schedule-filter" />
+        <div id="schedule-list"></div>
+      </section>
+
+      <section id="page-reminder" class="page" style="display:none">
+        <h2>Reminders</h2>
+        <div id="reminder-list"></div>
+      </section>
+
+      <section id="page-progress" class="page" style="display:none">
+        <h2>Progress</h2>
+        <canvas id="progress-chart" width="600" height="260"></canvas>
+        <p class="muted" id="progress-text"></p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div id="task-modal" class="overlay" style="display:none">
+    <div class="modal">
+      <h3>Add / Edit Task</h3>
+      <label>Title</label><input id="task-title" />
+      <label>Description</label><textarea id="task-desc"></textarea>
+      <label>Date</label><input type="date" id="task-date" />
+      <label>Time</label><input type="time" id="task-time" />
+      <div class="modal-actions">
+        <button id="cancel-task">Cancel</button>
+        <button id="save-task" class="btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="overlay">
+    <div class="modal">
+      <h2>Sign in</h2>
+      <label>Email</label><input id="login-email" type="email" />
+      <label>Phone</label><input id="login-phone" type="tel" />
+      <label>Password (optional)</label><input id="login-pass" type="password" />
+      <div class="modal-actions">
+        <button id="login-btn" class="btn">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Banner -->
+  <div id="notify-banner">
+    <div><strong id="notify-title">Reminder</strong></div>
+    <div id="notify-body" class="muted"></div>
+    <button id="dismiss-notify">Dismiss</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
